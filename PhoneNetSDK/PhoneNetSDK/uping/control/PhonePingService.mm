@@ -124,10 +124,12 @@ static PhonePingService *ucPingservice_instance = NULL;
         return;
     }
     if (status == PhoneNetPingStatusDidTimeout) {
-        _pingResultHandler(@"timeout");;
+        _pingResultHandler(@"timeout");
+        return;
     }
     if (status == PhoneNetPingStatusError) {
-        _pingResultHandler(@"error");;
+        _pingResultHandler(@"error");
+        return;
     }
     
     NSString *pingDetail = [NSString stringWithFormat:@"%d bytes form %@: icmp_seq=%d ttl=%d time=%.3fms",(int)pingRes.dateBytesLength,pingRes.IPAddress,(int)pingRes.ICMPSequence,(int)pingRes.timeToLive,pingRes.timeMilliseconds];
